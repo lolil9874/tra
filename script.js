@@ -109,7 +109,7 @@
       c.alpha += (c.target - c.alpha) * 0.018;
       const col = i % cols;
       const row = Math.floor(i / cols);
-      ctx.fillStyle = `rgba(240,165,0,${c.alpha})`;
+      ctx.fillStyle = `rgba(204,255,0,${c.alpha})`;
       ctx.fillRect(col * CELL + GAP / 2, row * CELL + GAP / 2, CELL - GAP, CELL - GAP);
     });
     requestAnimationFrame(draw);
@@ -129,7 +129,7 @@ function initSpotlights() {
       const r = card.getBoundingClientRect();
       const x = e.clientX - r.left;
       const y = e.clientY - r.top;
-      spot.style.background = `radial-gradient(circle 180px at ${x}px ${y}px, rgba(240,165,0,0.05), transparent 70%)`;
+      spot.style.background = `radial-gradient(circle 180px at ${x}px ${y}px, rgba(204,255,0,0.04), transparent 70%)`;
     });
     card.addEventListener('mouseleave', () => {
       spot.style.background = '';
@@ -217,7 +217,7 @@ document.querySelectorAll('.metric__value').forEach((el) => counterObserver.obse
   ];
 
   function makeCard(tool) {
-    return `<div class="tool-card card card--amber">
+    return `<div class="tool-card card card--lime">
       <div class="card__spotlight"></div>
       <div class="tool-card__icon">${tool.icon}</div>
       <div class="tool-card__name">${tool.name}</div>

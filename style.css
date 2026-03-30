@@ -675,16 +675,52 @@ section { position: relative; }
 /* ══════════════════════════════════════════════
    CHAT
    ══════════════════════════════════════════════ */
-.chat-fab {
+.chat-fab-wrap {
   position: fixed; bottom: 24px; right: 24px;
+  z-index: 1000; display: flex; align-items: flex-end; gap: 12px;
+  flex-direction: row-reverse;
+}
+.chat-fab {
   width: 52px; height: 52px; border-radius: var(--radius);
   background: var(--lime); border: none; cursor: pointer;
   display: flex; align-items: center; justify-content: center;
   box-shadow: 0 4px 20px var(--lime-glow);
-  z-index: 1000; transition: transform 0.2s;
+  transition: transform 0.2s; flex-shrink: 0; position: relative;
+}
+.chat-fab__dot {
+  position: absolute; top: -3px; left: -3px;
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--lime); animation: fabDotPulse 2s infinite;
+}
+@keyframes fabDotPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.4); }
 }
 .chat-fab:hover { transform: translateY(-2px); }
 .chat-fab svg { width: 20px; height: 20px; fill: var(--bg); }
+
+.chat-fab-tooltip {
+  background: var(--surface); border: 1px solid var(--lime);
+  border-radius: var(--radius-lg); padding: 14px 36px 14px 16px;
+  color: var(--text-secondary); font-size: 0.88rem; line-height: 1.5;
+  max-width: 220px; position: relative;
+  animation: tooltipFadeIn 0.5s ease 1.5s both;
+}
+@keyframes tooltipFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.chat-fab-tooltip__dot {
+  display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--lime); margin-right: 4px; vertical-align: middle;
+}
+.chat-fab-tooltip__close {
+  position: absolute; top: 6px; right: 10px;
+  background: none; border: none; color: var(--text-muted);
+  font-size: 1.1rem; cursor: pointer; line-height: 1;
+}
+.chat-fab-tooltip__close:hover { color: var(--text-primary); }
+.chat-fab-tooltip.hidden { display: none; }
 
 .chat-panel {
   position: fixed; bottom: 88px; right: 24px;
@@ -758,5 +794,6 @@ section { position: relative; }
   .why-column { padding: 20px; }
   .infra-card { padding: 20px; }
   .chat-panel { bottom: 76px; right: 10px; width: calc(100vw - 20px); }
-  .chat-fab { bottom: 16px; right: 16px; }
+  .chat-fab-wrap { bottom: 16px; right: 16px; }
+  .chat-fab-tooltip { max-width: 180px; font-size: 0.82rem; padding: 10px 30px 10px 12px; }
 }

@@ -322,16 +322,24 @@
   <footer class="footer">tra.helwan.co — Built by Helwan.</footer>
 
   <!-- ═══ CHAT ═══ -->
-  <button class="chat-fab" id="chatFab" aria-label="Open chat">
-    <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.2L4 17.2V4h16v12z"/></svg>
-  </button>
+  <div class="chat-fab-wrap">
+    <div class="chat-fab-tooltip" id="chatTooltip">
+      <span class="chat-fab-tooltip__dot"></span>
+      Ask my OpenClaw — how he works, his stack, anything
+      <button class="chat-fab-tooltip__close" id="chatTooltipClose" aria-label="Close">&times;</button>
+    </div>
+    <button class="chat-fab" id="chatFab" aria-label="Open chat">
+      <span class="chat-fab__dot"></span>
+      <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.2L4 17.2V4h16v12z"/></svg>
+    </button>
+  </div>
   <div class="chat-panel" id="chatPanel">
     <div class="chat-panel__header">
       <h4>Ask about Helwan</h4>
       <p>Powered by OpenClaw — agent.helwan.co</p>
     </div>
     <div class="chat-panel__messages" id="chatMessages">
-      <div class="chat-msg chat-msg--bot">Ask me anything about Helwan's background, stack, or projects.</div>
+      <div class="chat-msg chat-msg--bot">Hey! I'm Helwan's OpenClaw agent. Ask me about his stack, how he works, if he's a good fit — anything.</div>
     </div>
     <div class="chat-panel__input">
       <input type="text" id="chatInput" placeholder="Type a message..." autocomplete="off">

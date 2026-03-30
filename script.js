@@ -246,14 +246,24 @@ document.querySelectorAll('.metric__value').forEach((el) => counterObserver.obse
   const input = document.getElementById('chatInput');
   const sendBtn = document.getElementById('chatSend');
   const messages = document.getElementById('chatMessages');
+  const tooltip = document.getElementById('chatTooltip');
+  const tooltipClose = document.getElementById('chatTooltipClose');
 
   // Replace with your agent endpoint when ready
   const AGENT_URL = null;
 
   if (!fab || !panel) return;
 
+  if (tooltipClose) {
+    tooltipClose.addEventListener('click', (e) => {
+      e.stopPropagation();
+      tooltip.classList.add('hidden');
+    });
+  }
+
   fab.addEventListener('click', () => {
     panel.classList.toggle('open');
+    if (tooltip) tooltip.classList.add('hidden');
     if (panel.classList.contains('open')) input.focus();
   });
 
